@@ -34,7 +34,11 @@ On-chain governance dropped the secret ballot: every vote is signed by an addres
 ================================================================
 只有一个富文本框「Describe your BUIDL」，吃 Markdown。
 把下面 **【复制开始】到【复制结束】之间整段** 粘进去。
-- 若格式没渲染：点工具栏 `<>`（源码模式），或右侧 "Switch to old editor"，再粘。
+
+**三张截图已经用 `![]()` 语法直接写死在文案里了**（图片托管在公开仓库 raw.githubusercontent.com，不是本地路径），只要编辑器认 Markdown 图片语法，整段粘贴后图片会跟着文字自动出现在该出现的位置——**不需要你另外找工具栏按钮上传**。
+
+- 粘贴后检查一下图片是不是真的渲染出来了（3 张：投票界面 / 重复投票被拒 / 投票回执）。如果编辑器只显示了 `![...](...)` 这行原始文字、没转成图片：说明这个框不认标准 Markdown 图片语法，退而求其次——删掉那一行文字，改用工具栏的图片图标手动上传本地文件 `submission/assets/screenshots/1-ballot.png`（对应 3 张）。
+- 若整体格式没渲染：点工具栏 `<>`（源码模式），或右侧 "Switch to old editor"，再粘。
 - 加分项：工具栏 🎬 图标可**内嵌** demo 视频，粘 `https://youtu.be/woqsZBT4vUY`，评委不用跳走就能看。
 
 ------------------------------【复制开始】------------------------------
@@ -60,6 +64,8 @@ The Soroban contract verifies the proof on-chain, burns the nullifier, and incre
 
 **ZK is load-bearing:** remove the proof and Booth ceases to exist — nothing else admits an anonymous-but-eligible voter while making double voting impossible.
 
+![Booth ballot — pick a voter pass, mark a choice, cast](https://raw.githubusercontent.com/stetang98/booth/main/submission/assets/screenshots/1-ballot.png)
+
 ### Built on Stellar's newest cryptography
 
 - **BN254 `pairing_check`** (Protocol 25 "X-Ray", CAP-0074) — the Groth16 verification equation, on-chain
@@ -77,9 +83,13 @@ Everything runs on Stellar testnet with no mocks:
 3. Press **"Try to vote twice ✋"** — the contract rejects the reused nullifier: `contract error #5 · AlreadyVoted`. That rejection is the protocol working.
 4. Or create your own poll: the app generates voter passes client-side, builds the electorate tree in-browser, opens the poll on testnet, and hands you the passes to distribute.
 
+![Double voting blocked by the nullifier — contract error #5 · AlreadyVoted](https://raw.githubusercontent.com/stetang98/booth/main/submission/assets/screenshots/3-blocked.png)
+
 Hardening beyond the happy path: an independent security review during the build found the classic circomlib `LessThan` wraparound under-constraint — fixed with a full `Num2Bits` range decomposition; public inputs are rebuilt from contract state (root, pollId) so proofs can't be replayed against stale or foreign electorates; non-canonical field elements (≥ r) are rejected to kill nullifier aliasing.
 
 ### Verifiable on-chain
+
+![Ballot receipt — nullifier, ledger, transaction link, live tally](https://raw.githubusercontent.com/stetang98/booth/main/submission/assets/screenshots/2-receipt.png)
 
 - Contract: https://stellar.expert/explorer/testnet/contract/CAQY4QYKESCAPKLDS5O5RLKGXMALSNZ3NCBT327BETJP7ZKOCL6HZKEW
 - A real anonymous ballot (browser-generated proof, verified on-chain): https://stellar.expert/explorer/testnet/tx/3d2d6845a32353a8af04c427fb474366553e07572e16198306dfd80b09de8574
