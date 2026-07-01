@@ -6,7 +6,7 @@
 
 Built for **[Stellar Hacks: Real-World ZK](https://dorahacks.io/hackathon/stellar-hacks-zk)** · July 2026
 
-**Live dApp:** https://booth-stellar.vercel.app · **Demo video:** [`docs/demo.mp4`](docs/)
+**Live dApp:** https://booth-stellar.vercel.app · **Demo video:** [youtu.be/woqsZBT4vUY](https://youtu.be/woqsZBT4vUY)
 **Contract (Stellar testnet):** [`CAQY4QYKESCAPKLDS5O5RLKGXMALSNZ3NCBT327BETJP7ZKOCL6HZKEW`](https://stellar.expert/explorer/testnet/contract/CAQY4QYKESCAPKLDS5O5RLKGXMALSNZ3NCBT327BETJP7ZKOCL6HZKEW)
 
 </div>
