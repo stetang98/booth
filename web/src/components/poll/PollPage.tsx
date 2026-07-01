@@ -4,6 +4,7 @@ import { ledgerEta } from '../../lib/format.ts';
 import { DEMO_ROOT_HEX } from '../../lib/passes.ts';
 import { BallotCard } from '../vote/BallotCard.tsx';
 import { HashChip } from '../ui/HashChip.tsx';
+import { FreshDemoButton } from './FreshDemoButton.tsx';
 import { TallyBoard } from './TallyBoard.tsx';
 import './poll.css';
 
@@ -76,6 +77,14 @@ export function PollPage({ id }: { id: number }) {
             </dd>
           </div>
         </dl>
+        {isDemo && (
+          <div className="masthead-actions">
+            <FreshDemoButton compact />{' '}
+            <span className="mono masthead-hint">
+              — same five passes, new poll id, every nullifier reset
+            </span>
+          </div>
+        )}
       </section>
 
       <div className="poll-grid">

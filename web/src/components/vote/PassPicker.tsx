@@ -9,7 +9,9 @@ import {
   resolveDemoPass,
   type ResolvedPass,
 } from '../../lib/passes.ts';
-import { fetchHasVoted, type PollInfo } from '../../lib/stellar.ts';
+import { chain } from '../../lib/chain.ts';
+import type { PollInfo } from '../../lib/stellar.ts';
+import { FreshDemoButton } from '../poll/FreshDemoButton.tsx';
 import './vote.css';
 
 export function PassPicker({
@@ -26,6 +28,7 @@ export function PassPicker({
   const [votedMap, setVotedMap] = useState<Record<number, boolean>>({});
   const [importText, setImportText] = useState('');
   const [importError, setImportError] = useState<string | null>(null);
+  const allUsed = DEMO_PASSES.every((p) => votedMap[p.leafIndex] === true);
 
   // Badge demo passes whose nullifier is already burned for this poll.
   useEffect(() => {
@@ -33,6 +36,7 @@ export function PassPicker({
     let alive = true;
     void Promise.all(
       DEMO_PASSES.map(async (pass) => {
+        const { fetchHasVoted } = await chain();
         const hash = computeNullifierHash(BigInt(pass.nullifier), BigInt(poll.id));
         const voted = await fetchHasVoted(poll.id, bigIntToHex32(hash));
         return [pass.leafIndex, voted] as const;
@@ -82,28 +86,41 @@ export function PassPicker({
       </div>
 
       {isDemoElectorate && !showImport && (
-        <ul className="pass-grid" role="list">
-          {DEMO_PASSES.map((pass) => {
-            const isSelected =
-              selected?.source === 'demo' && selected.leafIndex === pass.leafIndex;
-            const voted = votedMap[pass.leafIndex] === true;
-            return (
-              <li key={pass.leafIndex}>
-                <button
-                  type="button"
-                  className={`pass-card ${isSelected ? 'pass-card--selected' : ''}`}
-                  aria-pressed={isSelected}
-                  onClick={() => onSelect(resolveDemoPass(pass))}
-                >
-                  <span className="pass-name">{pass.name}</span>
-                  <span className="pass-leaf mono">leaf {pass.leafIndex}</span>
-                  <span className="pass-commit mono">{truncMiddle(pass.commitment, 5, 5)}</span>
-                  {voted && <span className="pass-voted">voted</span>}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+        <>
+          <ul className="pass-grid" role="list">
+            {DEMO_PASSES.map((pass) => {
+              const isSelected =
+                selected?.source === 'demo' && selected.leafIndex === pass.leafIndex;
+              const voted = votedMap[pass.leafIndex] === true;
+              return (
+                <li key={pass.leafIndex}>
+                  <button
+                    type="button"
+                    className={`pass-card ${isSelected ? 'pass-card--selected' : ''} ${
+                      voted ? 'pass-card--used' : ''
+                    }`}
+                    aria-pressed={isSelected}
+                    onClick={() => onSelect(resolveDemoPass(pass))}
+                  >
+                    <span className="pass-name">{pass.name}</span>
+                    <span className="pass-leaf mono">leaf {pass.leafIndex}</span>
+                    <span className="pass-commit mono">{truncMiddle(pass.commitment, 5, 5)}</span>
+                    {voted && <span className="pass-voted">voted</span>}
+                    {voted && (
+                      <span className="pass-used-note">already voted in this poll</span>
+                    )}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+          {allUsed && (
+            <div className="notice pass-all-used" role="status">
+              All five demo passes have voted in this poll — nullifiers are one-time by design.{' '}
+              <FreshDemoButton compact />
+            </div>
+          )}
+        </>
       )}
 
       {showImport && (

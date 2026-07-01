@@ -48,7 +48,8 @@ const HOW_IT_WORKS = [
 ];
 
 export function Home() {
-  const { data: polls, loading, error, latestLedger, refresh } = usePolls();
+  const { polls, pinned, loading, loadingMore, error, hasMore, latestLedger, loadMore, refresh } =
+    usePolls();
 
   return (
     <div className="wrap">
@@ -110,12 +111,29 @@ export function Home() {
             Could not reach the Soroban RPC: {error}
           </div>
         )}
-        {polls && (
-          <ul className="poll-list">
-            {[...polls].reverse().map((poll) => (
-              <PollCard key={poll.id} poll={poll} latestLedger={latestLedger} />
-            ))}
-          </ul>
+        {!loading && (pinned !== null || polls !== null) && (
+          <>
+            <ul className="poll-list">
+              {pinned !== null && (
+                <PollCard poll={pinned} latestLedger={latestLedger} pinned />
+              )}
+              {(polls ?? []).map((poll) => (
+                <PollCard key={poll.id} poll={poll} latestLedger={latestLedger} />
+              ))}
+            </ul>
+            {hasMore && (
+              <div className="docket-more">
+                <button
+                  type="button"
+                  className="ghost-btn"
+                  onClick={loadMore}
+                  disabled={loadingMore}
+                >
+                  {loadingMore ? 'loading…' : 'Load older polls'}
+                </button>
+              </div>
+            )}
+          </>
         )}
       </section>
     </div>

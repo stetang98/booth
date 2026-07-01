@@ -12,7 +12,8 @@ export const CONTRACT_ERROR_MESSAGES: Record<number, string> = {
   5: 'This voter pass has already cast a ballot in this poll — the nullifier is burned.',
   6: 'Proof rejected by the on-chain verifier.',
   7: 'A public input was not a canonical BN254 field element.',
-  8: 'Polls must have between 2 and 16 choices.',
+  8: 'Polls must have between 2 and 16 choices.', // InvalidChoiceCount
+  9: 'Poll duration is out of range (60–600,000 ledgers).', // InvalidDuration
 };
 
 const CONTRACT_ERROR_RE = /Error\(Contract, #(\d+)\)/;

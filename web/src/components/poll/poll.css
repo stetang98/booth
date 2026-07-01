@@ -54,9 +54,26 @@
   color: var(--ink-faint);
 }
 
+.poll-card--pinned {
+  border-color: var(--ink);
+  border-width: 2px;
+}
+
+/* spam-proof: long titles clamp to two lines */
 .poll-card-title {
   font-size: var(--text-h3);
   margin-top: 0.45rem;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.docket-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.4rem;
 }
 
 .poll-card-meta {
@@ -100,6 +117,27 @@
   letter-spacing: -0.02em;
   max-width: 46rem;
   margin-top: 0.7rem;
+  overflow-wrap: anywhere;
+}
+
+.masthead-actions {
+  margin-top: 1.1rem;
+}
+
+.fresh-demo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.fresh-demo-error {
+  font-size: var(--text-xs);
+  color: var(--stamp-deep);
+}
+
+.masthead-hint {
+  color: var(--ink-faint);
 }
 
 .poll-meta {

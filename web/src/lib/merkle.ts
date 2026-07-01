@@ -5,7 +5,8 @@
 // fixtures in the smoke test). Fixed depth 16, empty leaf = 0n, zero-hash
 // chain per level — identical layout to the circuit.
 
-import { poseidon2 } from 'poseidon-lite';
+// Subpath import: pulls only the 2-arity Poseidon constants instead of all 16.
+import { poseidon2 } from 'poseidon-lite/poseidon2';
 
 export const TREE_DEPTH = 16;
 

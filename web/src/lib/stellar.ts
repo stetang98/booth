@@ -3,6 +3,8 @@
 // would be a fee-bump relayer).
 
 import { Buffer } from 'buffer';
+// The `minimal` entry excludes Horizon's axios/eventsource weight — Booth
+// only ever talks to the Soroban RPC.
 import {
   Account,
   Address,
@@ -10,11 +12,14 @@ import {
   Contract,
   Keypair,
   nativeToScVal,
+  rpc,
   scValToNative,
   TransactionBuilder,
   xdr,
-} from '@stellar/stellar-sdk';
-import { Api, Server } from '@stellar/stellar-sdk/rpc';
+} from '@stellar/stellar-sdk/minimal';
+
+const { Api, Server } = rpc;
+type Server = rpc.Server;
 import { CONTRACT_ID, FRIENDBOT_URL, NETWORK_PASSPHRASE, RPC_URL } from './config.ts';
 import { ContractCallError, safeStringify, toContractCallError } from './errors.ts';
 import { bytesToHex } from './format.ts';
@@ -109,10 +114,28 @@ export async function fetchPoll(id: number): Promise<PollInfo> {
   return toPollInfo(id, raw);
 }
 
-export async function fetchAllPolls(): Promise<PollInfo[]> {
+export interface PollListPage {
+  polls: PollInfo[];
+  count: number;
+  /** Fetch ids strictly below this next time; null when everything is loaded. */
+  nextBeforeId: number | null;
+}
+
+/**
+ * Newest-first page of polls. Individual `get_poll` failures are skipped so
+ * one bad id can never break the docket.
+ */
+export async function fetchPollsNewest(limit: number, beforeId?: number): Promise<PollListPage> {
   const count = await fetchPollCount();
-  const ids = Array.from({ length: count }, (_, i) => i);
-  return Promise.all(ids.map((id) => fetchPoll(id)));
+  const start = Math.min(beforeId ?? count, count) - 1;
+  const ids: number[] = [];
+  for (let id = start; id >= 0 && ids.length < limit; id--) ids.push(id);
+  const settled = await Promise.allSettled(ids.map((id) => fetchPoll(id)));
+  const polls = settled
+    .filter((r): r is PromiseFulfilledResult<PollInfo> => r.status === 'fulfilled')
+    .map((r) => r.value);
+  const lowest = ids.length > 0 ? ids[ids.length - 1] : 0;
+  return { polls, count, nextBeforeId: lowest > 0 ? lowest : null };
 }
 
 export async function fetchHasVoted(pollId: number, nullifierHashHex: string): Promise<boolean> {
@@ -226,10 +249,7 @@ export async function invokeContract(opts: {
   prepared.sign(signer);
 
   const sent = await server.sendTransaction(prepared);
-  if (
-    sent.status !== Api.SendTransactionStatus.PENDING &&
-    sent.status !== Api.SendTransactionStatus.DUPLICATE
-  ) {
+  if (sent.status !== 'PENDING' && sent.status !== 'DUPLICATE') {
     const blob = `${sent.status} ${safeStringify(sent.errorResult ?? '')}`;
     throw toContractCallError(new Error(`Transaction rejected at submission: ${blob}`));
   }

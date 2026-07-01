@@ -6,15 +6,17 @@ import './poll.css';
 export function PollCard({
   poll,
   latestLedger,
+  pinned = false,
 }: {
   poll: PollInfo;
   latestLedger: number | null;
+  pinned?: boolean;
 }) {
   const eta = latestLedger !== null ? ledgerEta(poll.endLedger, latestLedger) : null;
   const isDemo = poll.rootHex === DEMO_ROOT_HEX;
 
   return (
-    <li className="poll-card sheet">
+    <li className={`poll-card sheet ${pinned ? 'poll-card--pinned' : ''}`}>
       <a href={`#/poll/${poll.id}`} className="poll-card-link">
         <div className="poll-card-top">
           <span className="overline">

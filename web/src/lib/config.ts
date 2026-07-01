@@ -1,6 +1,6 @@
 // Network + contract configuration for Booth on Stellar testnet.
 
-export const CONTRACT_ID = 'CDZ4RIBISYEIR52SJRY57VMEFQDZNDDO77MSC4JQLBXYI3H4CI3OLCXT';
+export const CONTRACT_ID = 'CAQY4QYKESCAPKLDS5O5RLKGXMALSNZ3NCBT327BETJP7ZKOCL6HZKEW';
 
 export const RPC_URL = 'https://soroban-testnet.stellar.org';
 export const FRIENDBOT_URL = 'https://friendbot.stellar.org';

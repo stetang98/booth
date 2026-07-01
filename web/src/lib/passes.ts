@@ -58,6 +58,17 @@ export const DEMO_PASSES: readonly DemoPass[] = [
 
 export const DEMO_COMMITMENTS: readonly string[] = DEMO_PASSES.map((p) => p.commitment);
 
+/* "Start a fresh demo poll": same electorate root, new poll id — makes the
+ * public demo un-griefable when all pass nullifiers are burned. */
+export const FRESH_DEMO_TITLE =
+  'Fund Project Aurora from the community treasury? (fresh demo)';
+export const DEMO_POLL_CHOICES: readonly string[] = [
+  'Yes, fund it',
+  'No, revise the budget',
+  'Abstain',
+];
+export const FRESH_DEMO_DURATION_LEDGERS = 100_000;
+
 /** A pass resolved to everything the prover needs. */
 export interface ResolvedPass {
   label: string;

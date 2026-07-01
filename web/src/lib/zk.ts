@@ -56,7 +56,7 @@ export interface ArtifactProgress {
   label: string;
 }
 
-const ARTIFACT_TOTAL_BYTES = 4446130 + 1804494; // zkey + wasm (known sizes)
+const ARTIFACT_TOTAL_BYTES = 4443145 + 1803600; // zkey + wasm (known sizes)
 
 let artifactsPromise: Promise<{ wasm: MemFile; zkey: MemFile }> | null = null;
 

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useVoteFlow } from '../../hooks/useVoteFlow.ts';
-import type { ResolvedPass } from '../../lib/passes.ts';
+import { DEMO_ROOT_HEX, type ResolvedPass } from '../../lib/passes.ts';
 import type { PollInfo } from '../../lib/stellar.ts';
+import { FreshDemoButton } from '../poll/FreshDemoButton.tsx';
 import { PassPicker } from './PassPicker.tsx';
 import { ReceiptCard } from './ReceiptCard.tsx';
 import { VoteStepper } from './VoteStepper.tsx';
@@ -51,9 +52,12 @@ export function BallotCard({
             without ever learning whose pass it is. That is the whole trick.
           </p>
           <p className="mono blocked-code">contract error #5 · AlreadyVoted</p>
-          <button type="button" className="ghost-btn" onClick={reset}>
-            Back to the ballot
-          </button>
+          <div className="receipt-actions">
+            <button type="button" className="ghost-btn" onClick={reset}>
+              Back to the ballot
+            </button>
+            {poll.rootHex === DEMO_ROOT_HEX && <FreshDemoButton />}
+          </div>
         </div>
       )}
 

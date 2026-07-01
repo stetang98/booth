@@ -10,5 +10,7 @@ export default defineConfig({
   },
   build: {
     target: 'es2022',
+    // The lazily-loaded Stellar SDK chunk is ~840 kB minified by nature.
+    chunkSizeWarningLimit: 900,
   },
 });

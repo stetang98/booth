@@ -3,17 +3,13 @@
 // (AlreadyVoted) is a first-class "blocked" outcome, not a generic failure.
 
 import { useCallback, useRef, useState } from 'react';
+import { chain } from '../lib/chain.ts';
 import { encodeProof } from '../lib/encode.ts';
 import { ALREADY_VOTED_CODE, CONTRACT_ERROR_MESSAGES, toContractCallError } from '../lib/errors.ts';
 import { bigIntToHex32, truncMiddle } from '../lib/format.ts';
 import { buildTree, computeNullifierHash, merkleProof } from '../lib/merkle.ts';
 import type { ResolvedPass } from '../lib/passes.ts';
-import {
-  ensureFunded,
-  getSessionKeypair,
-  submitVote,
-  type PollInfo,
-} from '../lib/stellar.ts';
+import type { PollInfo } from '../lib/stellar.ts';
 import { generateVoteProof, type ArtifactProgress, type VoteCircuitInput } from '../lib/zk.ts';
 
 export const VOTE_STEPS = ['merkle', 'prove', 'fund', 'submit', 'confirm'] as const;
@@ -147,6 +143,7 @@ export function useVoteFlow(onSuccess?: () => void): VoteFlow {
         /* ③ Courier key */
         current = 'fund';
         setStep('fund', 'active', 'preparing a throwaway courier key…');
+        const { ensureFunded, getSessionKeypair, submitVote } = await chain();
         const courier = getSessionKeypair();
         const fundResult = await ensureFunded(courier);
         setStep(

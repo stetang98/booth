@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
+import { chain } from '../../lib/chain.ts';
 import { explorerTxUrl } from '../../lib/config.ts';
 import { toContractCallError } from '../../lib/errors.ts';
 import { bigIntToHex32, truncMiddle } from '../../lib/format.ts';
 import { buildTree } from '../../lib/merkle.ts';
-import { ensureFunded, getSessionKeypair, submitCreatePoll } from '../../lib/stellar.ts';
 import { HashChip } from '../ui/HashChip.tsx';
 import type { ElectorateMember } from './CreateWizard.tsx';
 import { PassHandout } from './PassHandout.tsx';
@@ -54,6 +54,7 @@ export function ReviewLaunch({
   const publish = async () => {
     setLaunch({ phase: 'fund', error: null, pollId: null, txHash: null });
     try {
+      const { ensureFunded, getSessionKeypair, submitCreatePoll } = await chain();
       const organizer = getSessionKeypair();
       await ensureFunded(organizer);
       setLaunch((prev) => ({ ...prev, phase: 'submit' }));
