@@ -1,0 +1,14 @@
+node_modules/
+contracts/target/
+web/dist/
+web/node_modules/
+
+# large public ceremony file — fetch with scripts/setup-circuit.sh
+circuits/build/pot14.ptau
+circuits/build/vote_0000.zkey
+circuits/build/test/
+
+.DS_Store
+*.log
+.env
+.vercel

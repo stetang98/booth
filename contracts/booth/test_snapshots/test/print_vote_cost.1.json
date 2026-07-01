@@ -1,0 +1,487 @@
+{
+  "generators": {
+    "address": 2,
+    "nonce": 0,
+    "mux_id": 0
+  },
+  "auth": [
+    [],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "function_name": "create_poll",
+              "args": [
+                {
+                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM"
+                },
+                {
+                  "string": "Ratify the 2026 treasury budget"
+                },
+                {
+                  "vec": [
+                    {
+                      "string": "Approve"
+                    },
+                    {
+                      "string": "Reject"
+                    },
+                    {
+                      "string": "Abstain"
+                    },
+                    {
+                      "string": "Postpone"
+                    }
+                  ]
+                },
+                {
+                  "bytes": "11c227d06ac019100e6d0d9dce5209bc9b09c1945750c4ea553d7a8f9e47818e"
+                },
+                {
+                  "u32": 17280
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "function_name": "create_poll",
+              "args": [
+                {
+                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM"
+                },
+                {
+                  "string": "Ratify the 2026 treasury budget"
+                },
+                {
+                  "vec": [
+                    {
+                      "string": "Approve"
+                    },
+                    {
+                      "string": "Reject"
+                    },
+                    {
+                      "string": "Abstain"
+                    },
+                    {
+                      "string": "Postpone"
+                    }
+                  ]
+                },
+                {
+                  "bytes": "11c227d06ac019100e6d0d9dce5209bc9b09c1945750c4ea553d7a8f9e47818e"
+                },
+                {
+                  "u32": 17280
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    []
+  ],
+  "ledger": {
+    "protocol_version": 26,
+    "sequence_number": 0,
+    "timestamp": 0,
+    "network_id": "0000000000000000000000000000000000000000000000000000000000000000",
+    "base_reserve": 0,
+    "min_persistent_entry_ttl": 4096,
+    "min_temp_entry_ttl": 16,
+    "max_entry_ttl": 6312000,
+    "ledger_entries": [
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "801925984706572462"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "5541220902715666415"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Nullifier"
+                  },
+                  {
+                    "u32": 1
+                  },
+                  {
+                    "bytes": "1751e75b02b25598dc9a11e6bed2c36034a70394fdc8acac6f4ae5ad25e2e952"
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 518400
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Poll"
+                  },
+                  {
+                    "u32": 0
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "choices"
+                    },
+                    "val": {
+                      "vec": [
+                        {
+                          "string": "Approve"
+                        },
+                        {
+                          "string": "Reject"
+                        },
+                        {
+                          "string": "Abstain"
+                        },
+                        {
+                          "string": "Postpone"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "end_ledger"
+                    },
+                    "val": {
+                      "u32": 17280
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "organizer"
+                    },
+                    "val": {
+                      "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "root"
+                    },
+                    "val": {
+                      "bytes": "11c227d06ac019100e6d0d9dce5209bc9b09c1945750c4ea553d7a8f9e47818e"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "tallies"
+                    },
+                    "val": {
+                      "vec": [
+                        {
+                          "u32": 0
+                        },
+                        {
+                          "u32": 0
+                        },
+                        {
+                          "u32": 0
+                        },
+                        {
+                          "u32": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "title"
+                    },
+                    "val": {
+                      "string": "Ratify the 2026 treasury budget"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 518400
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Poll"
+                  },
+                  {
+                    "u32": 1
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "choices"
+                    },
+                    "val": {
+                      "vec": [
+                        {
+                          "string": "Approve"
+                        },
+                        {
+                          "string": "Reject"
+                        },
+                        {
+                          "string": "Abstain"
+                        },
+                        {
+                          "string": "Postpone"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "end_ledger"
+                    },
+                    "val": {
+                      "u32": 17280
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "organizer"
+                    },
+                    "val": {
+                      "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "root"
+                    },
+                    "val": {
+                      "bytes": "11c227d06ac019100e6d0d9dce5209bc9b09c1945750c4ea553d7a8f9e47818e"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "tallies"
+                    },
+                    "val": {
+                      "vec": [
+                        {
+                          "u32": 0
+                        },
+                        {
+                          "u32": 0
+                        },
+                        {
+                          "u32": 1
+                        },
+                        {
+                          "u32": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "title"
+                    },
+                    "val": {
+                      "string": "Ratify the 2026 treasury budget"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 518400
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "key": "ledger_key_contract_instance",
+              "durability": "persistent",
+              "val": {
+                "contract_instance": {
+                  "executable": {
+                    "wasm": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  "storage": [
+                    {
+                      "key": {
+                        "vec": [
+                          {
+                            "symbol": "PollCount"
+                          }
+                        ]
+                      },
+                      "val": {
+                        "u32": 2
+                      }
+                    },
+                    {
+                      "key": {
+                        "vec": [
+                          {
+                            "symbol": "Vk"
+                          }
+                        ]
+                      },
+                      "val": {
+                        "bytes": "2d4d9aa7e302d9df41749d5507949d05dbea33fbb16c643b22f599a2be6df2e214bedd503c37ceb061d8ec60209fe345ce89830a19230301f076caff004d19260967032fcbf776d1afc985f88877f182d38480a653f2decaa9794cbc3bf3060c0e187847ad4c798374d0d6732bf501847dd68bc0e071241e0213bc7fc13db7ab304cfbd1e08a704a99f5e847d93f8c3caafddec46b7a0d379da69a4d112346a71739c1b1a457a8c7313123d24d2f9192f896b7c63eea05a9d57f06547ad0cec8198e9393920d483a7260bfb731fb5d25f1aa493335a9e71297e485b7aef312c21800deef121f1e76426a00665e5c4479674322d4f75edadd46debd5cd992f6ed090689d0585ff075ec9e99ad690c3395bc4b313370b38ef355acdadcd122975b12c85ea5db8c6deb4aab71808dcb408fe3d1e7690c43d37b4ce6cc0166fa7daa142d076b12b713746ed4c784c041ca7800076ede5dbc10cc5f9e48b406a7166d1b225ad518a5e245bc4d535d8e2dd13d224a4ee22993f6fa42308f6008e420da181886142f55385bce5249b14f01eaa7c02d51f5b81dcb12efbebd3b335898b313eaae66bac09ebc4561ace0d8e6bbd85d8590f41aae5a1fea0c4e7ebea905dd0000000512ca54d448f4a03ed0645ae5b5942afca3ed819b7d8cab417eefb0fd18725aa62ff76e6a168e98c60dd9253e7fe6566ff0fd043bc8f9edc34f5bdef6732e5be8203273b928ffb324ef59ec256f38a4cca4271d884f1cf8422c10cca135a0c146176d0ee47efb578060e6faf7a6f8403df8dc5b291ddb3baa923fe237374715eb22bee5de1fee0fee4550f0195ceaf933aebb18666c3b158ec595d9e79c8177a301b0a349806b8158c06174decaaac0e3242b37afe56b22a5eab4273d2b593eca0b8ae76adb58a40f291d3e43a5eaa3193133fcd35924f070e317a169d9b753130ae485573402c92fc35af42d5636469f66f442f743e62e40109090e4d093824d208a4d26f6023b16731f1094f9cc4746429caa09b8f7a126ade6f0d98f237acc2dfe42d3c463a1d963f0ba91beaccd7bb6559df734433435f94fbbd68cb72a7d"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 518400
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_code": {
+              "ext": "v0",
+              "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "code": ""
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 518400
+      }
+    ]
+  },
+  "events": [
+    {
+      "event": {
+        "ext": "v0",
+        "contract_id": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+        "type_": "contract",
+        "body": {
+          "v0": {
+            "topics": [
+              {
+                "symbol": "voted"
+              },
+              {
+                "u32": 1
+              }
+            ],
+            "data": {
+              "map": [
+                {
+                  "key": {
+                    "symbol": "nullifier_hash"
+                  },
+                  "val": {
+                    "bytes": "1751e75b02b25598dc9a11e6bed2c36034a70394fdc8acac6f4ae5ad25e2e952"
+                  }
+                },
+                {
+                  "key": {
+                    "symbol": "vote_choice"
+                  },
+                  "val": {
+                    "u32": 2
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "failed_call": false
+    }
+  ]
+}
