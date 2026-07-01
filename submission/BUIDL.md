@@ -44,8 +44,8 @@ Everything on Stellar testnet, no mocks: pick a demo voter pass on the live dApp
 ### Links
 
 - Live dApp: https://booth-stellar.vercel.app
-- Contract (testnet): CDZ4RIBISYEIR52SJRY57VMEFQDZNDDO77MSC4JQLBXYI3H4CI3OLCXT
-  https://stellar.expert/explorer/testnet/contract/CDZ4RIBISYEIR52SJRY57VMEFQDZNDDO77MSC4JQLBXYI3H4CI3OLCXT
+- Contract (testnet): CAQY4QYKESCAPKLDS5O5RLKGXMALSNZ3NCBT327BETJP7ZKOCL6HZKEW
+  https://stellar.expert/explorer/testnet/contract/CAQY4QYKESCAPKLDS5O5RLKGXMALSNZ3NCBT327BETJP7ZKOCL6HZKEW
 - GitHub: https://github.com/stetang98/booth
 - Demo video: 【提交前填 YouTube/Loom 链接】
 

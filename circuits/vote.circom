@@ -2,7 +2,7 @@ pragma circom 2.1.6;
 
 include "circomlib/poseidon.circom";
 include "circomlib/mux1.circom";
-include "circomlib/comparators.circom";
+include "circomlib/bitify.circom";
 
 // One level of a Merkle proof: given the current hash and a sibling, produce the
 // parent hash. `pathIndex` selects whether `cur` is the left (0) or right (1) child.
@@ -91,15 +91,12 @@ template Vote(DEPTH) {
     nul.inputs[1] <== pollId;
     nullifierHash === nul.out;
 
-    // Bind voteChoice into the proof so it cannot be malleated after proving, and
-    // constrain it to a small range [0, 15] (max 16 ballot options).
-    signal voteChoiceSq;
-    voteChoiceSq <== voteChoice * voteChoice;
-
-    component lt = LessThan(8);
-    lt.in[0] <== voteChoice;
-    lt.in[1] <== 16;
-    lt.out === 1;
+    // Range-constrain voteChoice to [0, 15] (max 16 ballot options) with a
+    // full bit decomposition — sound standalone, with no smallness assumption
+    // on the input. (The verifier contract additionally derives this public
+    // input from a u32, so the check holds in both layers independently.)
+    component choiceBits = Num2Bits(4);
+    choiceBits.in <== voteChoice;
 }
 
 component main {public [merkleRoot, nullifierHash, pollId, voteChoice]} = Vote(16);

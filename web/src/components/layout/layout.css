@@ -1,0 +1,88 @@
+.site-header {
+  border-bottom: 1.5px solid var(--line);
+  background: color-mix(in srgb, var(--paper) 88%, white);
+}
+
+.header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-block: 1.05rem;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.wordmark:hover {
+  color: var(--ink);
+}
+
+.wordmark-dot {
+  color: var(--stamp);
+}
+
+.site-nav {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(0.9rem, 2.5vw, 1.6rem);
+}
+
+.site-nav a {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--stamp);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.net-badge {
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--civic);
+  border: 1.5px solid var(--civic);
+  border-radius: 999px;
+  padding: 0.12rem 0.6rem;
+}
+
+.site-footer {
+  border-top: 1.5px solid var(--line);
+  margin-top: var(--space-section);
+  background: var(--paper-dim);
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-md);
+  padding-block: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.footer-motto {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.footer-meta {
+  font-size: var(--text-xs);
+  color: var(--ink-faint);
+}

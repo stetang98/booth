@@ -1,0 +1,238 @@
+/* ---------- poll cards (docket) ---------- */
+
+.poll-card {
+  transition:
+    box-shadow var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.poll-card:hover {
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-1px);
+}
+
+.poll-card-link {
+  display: block;
+  padding: 1.1rem 1.3rem 1.2rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.poll-card-link:hover {
+  color: inherit;
+}
+
+.poll-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.demo-badge {
+  display: inline-block;
+  margin-left: 0.6rem;
+  color: var(--stamp);
+  border: 1.5px solid var(--stamp);
+  border-radius: 3px;
+  padding: 0.06rem 0.4rem;
+  font-size: var(--text-2xs);
+  letter-spacing: 0.12em;
+  vertical-align: 1px;
+}
+
+.status-pill {
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--civic);
+}
+
+.status-pill--closed {
+  color: var(--ink-faint);
+}
+
+.poll-card-title {
+  font-size: var(--text-h3);
+  margin-top: 0.45rem;
+}
+
+.poll-card-meta {
+  margin-top: 0.55rem;
+  color: var(--ink-faint);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.poll-card-arrow {
+  margin-left: auto;
+  color: var(--stamp);
+  font-size: 1.05rem;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.poll-card:hover .poll-card-arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- poll page ---------- */
+
+.poll-page {
+  padding-top: calc(var(--space-section) * 0.5);
+}
+
+.poll-loading {
+  color: var(--ink-faint);
+  padding-block: var(--space-xl);
+}
+
+.masthead {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 1.6rem;
+}
+
+.poll-title {
+  font-size: var(--text-title);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  max-width: 46rem;
+  margin-top: 0.7rem;
+}
+
+.poll-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem clamp(1.4rem, 3.5vw, 3rem);
+  margin-top: 1.5rem;
+}
+
+.poll-meta dt {
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.3rem;
+}
+
+.poll-meta dd {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.poll-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: start;
+  margin-top: clamp(1.5rem, 3.5vw, 2.75rem);
+}
+
+/* ---------- tally board ---------- */
+
+.tally {
+  padding: 1.4rem 1.5rem 1.5rem;
+}
+
+.tally-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-md);
+}
+
+.tally-head h2 {
+  font-size: var(--text-h3);
+}
+
+.tally-refresh {
+  padding: 0.3rem 0.75rem;
+  font-size: var(--text-xs);
+}
+
+.tally-rows {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.3rem;
+  display: grid;
+  gap: 1.05rem;
+}
+
+.tally-label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.tally-choice {
+  font-weight: 500;
+  font-size: var(--text-sm);
+}
+
+.tally-count {
+  margin-left: auto;
+  color: var(--ink-soft);
+}
+
+.tally-bar {
+  margin-top: 0.4rem;
+  height: 14px;
+  background: var(--paper-dim);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.tally-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--ink);
+  transform-origin: left center;
+  transform: scaleX(var(--p, 0));
+  transition: transform 640ms var(--ease-out);
+}
+
+.tally-row--leader .tally-fill {
+  background: var(--stamp);
+}
+
+.tally-row--leader .tally-count {
+  color: var(--stamp);
+  font-weight: 600;
+}
+
+.tally-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+  font-size: var(--text-xs);
+  color: var(--ink-faint);
+}
+
+.tally-foot a {
+  font-size: var(--text-xs);
+}
+
+.ballot-key {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-faint);
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  padding: 0.05rem 0.38rem;
+  flex: none;
+}
+
+@media (max-width: 940px) {
+  .poll-grid {
+    grid-template-columns: 1fr;
+  }
+}

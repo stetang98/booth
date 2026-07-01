@@ -1,0 +1,229 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  padding-block: var(--space-section) calc(var(--space-section) * 0.8);
+}
+
+.hero-copy .overline {
+  margin-bottom: 1.1rem;
+}
+
+.hero h1 {
+  font-size: var(--text-hero);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--stamp);
+}
+
+.hero-sub {
+  max-width: 34rem;
+  margin-top: 1.4rem;
+  font-size: var(--text-base);
+  color: var(--ink-soft);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-cta {
+  text-decoration: none;
+}
+
+.hero-alt {
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+/* ------- specimen ballot (decorative) ------- */
+
+.specimen {
+  background: var(--paper-raised);
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lift);
+  padding: 1.2rem 1.3rem 1.5rem;
+  transform: rotate(1.6deg);
+  position: relative;
+  max-width: 21rem;
+  justify-self: end;
+}
+
+.specimen-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 0.5rem;
+}
+
+.specimen-q {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  margin-block: 0.85rem 0.9rem;
+}
+
+.specimen-rows {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.specimen-rows li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: var(--text-sm);
+  padding-block: 0.55rem;
+  border-top: 1px dashed var(--line);
+}
+
+.specimen-seal {
+  position: absolute;
+  right: -0.9rem;
+  bottom: 1.1rem;
+  transform: rotate(-9deg);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--stamp);
+  border: 2.5px solid var(--stamp);
+  border-radius: 4px;
+  padding: 0.3rem 0.55rem;
+  background: color-mix(in srgb, var(--paper-raised) 82%, transparent);
+}
+
+/* shared oval mark — also used by real ballot rows */
+.oval {
+  flex: none;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.oval--hover {
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    color-mix(in srgb, var(--ink) 26%, transparent) 60%,
+    transparent 61%
+  );
+}
+
+.oval--marked {
+  background: radial-gradient(ellipse at 47% 56%, var(--ink) 63%, transparent 64%);
+}
+
+/* ------- how it works ------- */
+
+.how {
+  padding-block: calc(var(--space-section) * 0.55);
+  border-top: 1.5px solid var(--line);
+}
+
+.section-title {
+  font-size: var(--text-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.how-grid {
+  list-style: none;
+  padding: 0;
+  margin-top: 2.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.2rem, 3vw, 2.6rem);
+}
+
+.how-step {
+  border-top: 2px solid var(--ink);
+  padding-top: 1rem;
+  position: relative;
+}
+
+.how-n {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 2.4rem;
+  color: var(--stamp);
+  line-height: 1;
+  display: block;
+}
+
+.how-step h3 {
+  font-size: var(--text-h3);
+  margin-top: 0.5rem;
+}
+
+.how-step p {
+  margin-top: 0.55rem;
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+}
+
+/* ------- docket ------- */
+
+.docket {
+  padding-block: calc(var(--space-section) * 0.55) 0;
+  border-top: 1.5px solid var(--line);
+}
+
+.docket-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-md);
+}
+
+.docket-status {
+  margin-top: 1.4rem;
+  color: var(--ink-faint);
+}
+
+.poll-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.8rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .specimen {
+    justify-self: start;
+    transform: rotate(-1.2deg);
+  }
+
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
+}

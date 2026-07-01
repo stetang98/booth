@@ -38,7 +38,8 @@ pub enum Error {
     AlreadyVoted = 5,
     InvalidProof = 6,
     InvalidFieldElement = 7,
-    TooManyChoices = 8,
+    InvalidChoiceCount = 8,
+    InvalidDuration = 9,
 }
 
 #[derive(Clone)]
@@ -205,7 +206,11 @@ impl BoothContract {
 
         // the circuit range-checks voteChoice < 16
         if choices.len() < 2 || choices.len() > 16 {
-            return Err(Error::TooManyChoices);
+            return Err(Error::InvalidChoiceCount);
+        }
+        // between ~5 minutes and ~35 days at 5s ledgers
+        if duration_ledgers < 60 || duration_ledgers > 600_000 {
+            return Err(Error::InvalidDuration);
         }
         to_fr(&env, &root)?;
 

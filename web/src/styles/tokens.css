@@ -1,0 +1,54 @@
+:root {
+  /* ---- ballot-paper palette ---- */
+  --paper: #f7f3ea;
+  --paper-raised: #fdfbf4;
+  --paper-dim: #efe9da;
+  --ink: #17150f;
+  --ink-soft: #4c4638;
+  --ink-faint: #8a8271;
+  --line: #d9d1bf;
+  --line-strong: #b9b09a;
+
+  /* stamp red — reserved for the act of voting */
+  --stamp: #b3372b;
+  --stamp-deep: #8e2a20;
+  --stamp-wash: rgba(179, 55, 43, 0.07);
+
+  /* civic blue — links & secondary structure */
+  --civic: #1f3a5f;
+  --civic-soft: #46608a;
+
+  /* ---- type ---- */
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-ui: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-hero: clamp(2.7rem, 1.1rem + 5.4vw, 5.6rem);
+  --text-title: clamp(1.85rem, 1.2rem + 2.3vw, 3.1rem);
+  --text-h3: clamp(1.25rem, 1.05rem + 0.7vw, 1.6rem);
+  --text-base: clamp(1rem, 0.96rem + 0.15vw, 1.0625rem);
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+  --text-2xs: 0.6875rem;
+
+  /* ---- rhythm ---- */
+  --space-section: clamp(3.25rem, 2.25rem + 4vw, 6.5rem);
+  --space-xl: 2.5rem;
+  --space-lg: 1.75rem;
+  --space-md: 1.125rem;
+  --space-sm: 0.625rem;
+  --space-xs: 0.375rem;
+  --wrap-max: 1120px;
+
+  /* ---- motion & surface ---- */
+  --dur-fast: 140ms;
+  --dur: 280ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-card:
+    0 1px 0 rgba(23, 21, 15, 0.05),
+    0 14px 34px -22px rgba(23, 21, 15, 0.42);
+  --shadow-lift:
+    0 1px 0 rgba(23, 21, 15, 0.06),
+    0 22px 44px -24px rgba(23, 21, 15, 0.5);
+  --radius: 3px;
+}
